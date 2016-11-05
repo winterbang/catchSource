@@ -11,18 +11,19 @@
   <nav>
     <span>hello, winter</span>
   </nav>
-  <div id="content" >
+  <div id="content">
     <div id="imgs">
       <header>
-        <button type="button" name="button">多选</button>
+        <label><input type="checkbox" name="checkmore" value="" id="btn-checkmore">多选</label>
+        <button type="button" name="download" id="download-more" disabled title="多选下载">下载</button>
       </header>
       <url class="img-list">
         <li class="img-item">
-          <input type="checkbox" class="btn-checkbox">
+          <input type="checkbox" class="btn-checkbox" name="img-check">
           <img src="http://gb.cri.cn/mmsource/images/2014/09/09/18/2403808887970987738.jpg" alt="">
           <footer>
             <button type="button" name="button" class="btn-download">下载</button>
-            <span>400*300</span>
+            <span class="size">400*300</span>
           </footer>
         </li>
       </url>

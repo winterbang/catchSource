@@ -5,7 +5,7 @@ nav {
 }
 
 #content {
-  min-width: 448px;
+  min-width: 440px;
   max-width:800px;
   max-height: 500px;
   overflow: auto;
@@ -16,10 +16,18 @@ nav {
   height: 35px;
   line-height: 35px;
 }
+#imgs header button {
+  /*border-radius: 3px;*/
+}
+#imgs header button:disabled {
+  cursor: not-allowed;
+}
+
 .img-list {
   list-style: none;
 }
 .img-list .img-item {
+  box-sizing: border-box;
   position: relative;
   float: left;
   width: 100px;
@@ -35,19 +43,39 @@ nav {
   position: absolute;
   top: 0;
   right: 0;
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
+  display: none;
 }
 .img-list .img-item img {
   max-height: 100px;
 }
 .img-list .img-item footer {
   position: absolute;
+  display: flex;
+  justify-content: space-between;
   bottom: 0;
   left: 0 ;
   right: 0;
   height: 20px;
   line-height: 20px;
+  padding: 0 5px;
   background-color: rgba(0, 0, 0, 0.4);
   color: #eee;
+}
+.img-list .img-item .btn-download:hover {
+  cursor: pointer;
+  background-color: #F8F8F8;
+}
+
+/* 多选状态 */
+.checkmore .img-item {
+  /*border-color: blue;*/
+  border: 2px solid blue;
+}
+.checkmore .img-item .btn-checkbox {
+  display: inline-block;
+}
+.checkmore .img-item .btn-download {
+  display: none;
 }

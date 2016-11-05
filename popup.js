@@ -1,30 +1,46 @@
-console.log('======');
-var sourcesList = [];
+let sourcesList = [];
+let imgList = document.querySelector('.img-list');
+let downloadUrls = []
+
 function showImage(urls) {
-  let imgList = document.querySelector('.img-list')
-  let imgsDom = urls.map(function(url, idx){
+
+  let imgsDom = urls.map(function(url, idx) {
     let li = document.createElement('li')
     li.className = "img-item"
 
     let checkbox = document.createElement('input')
     checkbox.type = "checkbox"
     checkbox.className = "btn-checkbox"
-
+    checkbox.name = "img-check"
+    checkbox.onclick = function taggle(e) {
+      console.log(downloadUrls);
+      if (e.target.checked) {
+        downloadUrls.push(url)
+      } else {
+        let idx = downloadUrls.indexOf(url)
+        if (idx > -1) downloadUrls.splice(idx, 1);
+      }
+    }
     let img = document.createElement('img')
     img.src = url
-
+    img.onload = function() {
+      this.nextSibling.querySelector('.size').innerText = `${img.width}*${img.height}`
+    }
     let footer = document.createElement('footer')
     let button = document.createElement('button')
     button.className = "btn-download"
     button.innerText = "下载"
     button.onclick = function() {
       chrome.downloads.download({
-        url: url},
+          url: url
+        },
         function(id) {}
       );
     }
+
     let span = document.createElement('span')
-    span.innerText = `${img.width}X${img.height}`
+    span.className = "size"
+    span.innerText = `${img.width}*${img.height}`
     footer.appendChild(button)
     footer.appendChild(span)
     li.appendChild(checkbox)
@@ -36,6 +52,33 @@ function showImage(urls) {
   console.log(imgsDom);
   // document.querySelector('#imgs').append(imgsDom)
 }
+
+function onCheckMore(e) {
+  if (e.target.checked) {
+    imgList.className += " checkmore"
+    e.target.parentElement.nextElementSibling.disabled = false
+  } else {
+    imgList.classList.remove("checkmore")
+    e.target.parentElement.nextElementSibling.disabled = true
+    let chk_arr = document.querySelectorAll('input[name=img-check]:checked')
+    console.log(chk_arr);
+    chk_arr.forEach(function(item, idx) {
+      item.checked = false
+    })
+    downloadUrls = []
+  }
+}
+
+function downloadCheckedLinks() {
+  for (var i = 0; i < downloadUrls.length; ++i) {
+    chrome.downloads.download({
+        url: downloadUrls[i]
+      },
+      function(id) {});
+  }
+  // window.close();
+}
+
 chrome.extension.onRequest.addListener(function(sources) {
   for (var index in sources) {
     sourcesList.push(sources[index]);
@@ -48,8 +91,8 @@ window.onload = function() {
   // document.getElementById('filter').onkeyup = filterLinks;
   // document.getElementById('regex').onchange = filterLinks;
   // document.getElementById('toggle_all').onchange = toggleAll;
-  // document.getElementById('download0').onclick = downloadCheckedLinks;
-  // document.getElementById('download1').onclick = downloadCheckedLinks;
+  document.getElementById('btn-checkmore').onclick = onCheckMore;
+  document.getElementById('download-more').onclick = downloadCheckedLinks;
   //
   chrome.windows.getCurrent(function(currentWindow) {
     chrome.tabs.query({

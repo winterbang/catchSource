@@ -27,6 +27,5 @@ for (; elements[i]; i++) {
 }
 
 // view the console to see the result
-console.log(sources);
 
 chrome.extension.sendRequest(sources);
