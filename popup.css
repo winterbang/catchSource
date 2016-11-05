@@ -1,0 +1,53 @@
+nav {
+  height: 38px;
+  line-height: 38px;
+  border-bottom: 1px solid #eee;
+}
+
+#content {
+  min-width: 448px;
+  max-width:800px;
+  max-height: 500px;
+  overflow: auto;
+}
+#imgs {}
+
+#imgs header {
+  height: 35px;
+  line-height: 35px;
+}
+.img-list {
+  list-style: none;
+}
+.img-list .img-item {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1;
+  margin: 5px;
+  border-radius: 3px 3px 3px;
+  border: 1px solid #d9d9d9;
+}
+.img-list .img-item .btn-checkbox {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+}
+.img-list .img-item img {
+  max-height: 100px;
+}
+.img-list .img-item footer {
+  position: absolute;
+  bottom: 0;
+  left: 0 ;
+  right: 0;
+  height: 20px;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #eee;
+}

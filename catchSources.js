@@ -23,10 +23,10 @@ for (; elements[i]; i++) {
       source = bgIm[1]
     }
   }
-  if (source && sources.indexOf(source) == -1) sources.push(source);
+  if (source && sources.indexOf(source) == -1 && source.indexOf("chrome-extension://") == -1) sources.push(source);
 }
 
 // view the console to see the result
 console.log(sources);
 
-// chrome.extension.sendRequest(sources);
+chrome.extension.sendRequest(sources);
