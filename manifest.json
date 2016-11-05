@@ -1,0 +1,17 @@
+{
+  "name": "catch images",
+  "version": "0",
+  "description": "抓取网页图片.",
+  "manifest_version": 2,
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "permissions": ["downloads", "<all_urls>", "http://*.google.com/", "https://*.google.com/"],
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "img/star.png",
+    "default_popup": "popup.html"
+  }
+}
