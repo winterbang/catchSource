@@ -1,6 +1,6 @@
 {
   "name": "catch images",
-  "version": "0",
+  "version": "1.0",
   "description": "抓取网页图片.",
   "manifest_version": 2,
   "icons": {

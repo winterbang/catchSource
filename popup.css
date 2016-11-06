@@ -7,8 +7,6 @@ nav {
 #content {
   min-width: 440px;
   max-width:800px;
-  max-height: 500px;
-  overflow: auto;
 }
 #imgs {}
 
@@ -22,9 +20,14 @@ nav {
 #imgs header button:disabled {
   cursor: not-allowed;
 }
-
+#imgs header .imgs-count {
+  float: right;
+}
 .img-list {
+  display: inline-block;
   list-style: none;
+  max-height: 500px;
+  overflow: auto;
 }
 .img-list .img-item {
   box-sizing: border-box;
@@ -57,15 +60,19 @@ nav {
   bottom: 0;
   left: 0 ;
   right: 0;
-  height: 20px;
+  height: 0px;
   line-height: 20px;
   padding: 0 5px;
   background-color: rgba(0, 0, 0, 0.4);
   color: #eee;
+  transition: height 0.5s;
+}
+.img-list .img-item:hover footer {
+  height: 20px;
 }
 .img-list .img-item .btn-download:hover {
   cursor: pointer;
-  background-color: #F8F8F8;
+  /*background-color: #F8F8F8;*/
 }
 
 /* 多选状态 */
