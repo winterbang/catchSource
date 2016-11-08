@@ -2,6 +2,7 @@ var sources = [],
   i = 0,
   bgIm,
   protocol = location.protocol;
+  origin = location.origin;
 
 function getStyle(x, styleProp) {
   if (x.currentStyle) var y = x.currentStyle[styleProp];
@@ -25,6 +26,7 @@ for (; elements[i]; i++) {
     }
   }
   source = source && source.slice(0, 2) == "//" ? protocol + source : source
+  source = source && source.slice(0, 1) == "/" ? origin + source : source
   if (source && sources.indexOf(source) == -1 && source.indexOf("chrome-extension://") == -1) sources.push(source);
 }
 
